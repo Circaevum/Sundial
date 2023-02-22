@@ -19,7 +19,7 @@ public class Hours : MonoBehaviour
     public void InstantiateHourLabel(int hourNum)
     {
         GameObject hour = Instantiate(hourLabel);
-        hour.transform.parent = GameObject.Find("Clock").transform;
+        hour.transform.parent = GameObject.Find("Hours").transform;
         hour.GetComponent<HourPositioner>().hourNum = hourNum;
         hour.GetComponent<TextMeshPro>().text = hourNum.ToString();
 

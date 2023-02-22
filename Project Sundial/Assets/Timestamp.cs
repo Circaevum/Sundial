@@ -21,6 +21,6 @@ public class Timestamp : MonoBehaviour
     {
         dayOfWeek = (Weekdays[(int)DateTime.Today.DayOfWeek]);
         timeStamp = DateTime.Now.ToString();
-        transform.GetComponent<TMP_Text>().text = dayOfWeek + ", " + timeStamp;
+        GetComponent<TMP_Text>().text = dayOfWeek + ", " + timeStamp;
     }
 }

@@ -31,10 +31,7 @@ public class TimeFrame : MonoBehaviour
 
     void Update()
     {
-        print(sundial.now.ToString()); 
         time = sundial.now;
-
-        print("TEST222");
         start = time - 5*288;
         stop = time + 5 * 288;
         //Every single increment is 5 minutes. So if 0 = Jan 1, 2020, then 144 = 12pm
