@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 public class ClockDayPositioner : MonoBehaviour
 {
-    private Sundial sundial;
+    private Circaevum sundial;
     public GameObject ParentObject;
     public GameObject ClockTime;
     private Slider mainSlider;
@@ -21,7 +21,7 @@ public class ClockDayPositioner : MonoBehaviour
     {
         //Need to reference Planetary Parameters to fill in Month Label
         string[] DayString = date.ToString().Split('/');
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         string monthName = sundial.MonthArray[Convert.ToInt32(DayString[0])-1];
         name = DayString[1];
         GetComponent<TMP_Text>().text = DayString[1] + "\n" + monthName;

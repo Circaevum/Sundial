@@ -10,13 +10,13 @@ public class Separators : MonoBehaviour
     private Toggle rotateTime;
     private Toggle straight;
     public Transform cam;
-    private Sundial sundial;
+    private Circaevum sundial;
     // Use this for initialization
     void Start()
     {
         separators = GetComponent<LineRenderer>();
         separators.positionCount = 75;
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         rotateTime = GameObject.Find("Toggle Rotate Time").GetComponent<Toggle>();
         straight = GameObject.Find("Straight Toggle").GetComponent<Toggle>();
 

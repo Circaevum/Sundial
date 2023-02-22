@@ -7,7 +7,7 @@ public class HourLabelPositioner : MonoBehaviour
 {
     public Transform TextObject;
   public float offset;
-    private Sundial sundial;
+    private Circaevum sundial;
     private Toggle straight;
     private Transform earth;
     private Transform origin;
@@ -18,7 +18,7 @@ public class HourLabelPositioner : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         earth = GameObject.Find("Earth_8K").GetComponent<Transform>();
         origin = GameObject.Find("Y-Origin").GetComponent<Transform>();
         straight = GameObject.Find("Straight Toggle").GetComponent<Toggle>();

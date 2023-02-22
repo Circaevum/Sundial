@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 
 //"SUNDIAL" is going to be the object we reference to do all of our spatio-temporal conversions
-public class Sundial : MonoBehaviour
+public class Circaevum : MonoBehaviour
 {
     public int timeZoneDif = 5;
     public float height = 150f;

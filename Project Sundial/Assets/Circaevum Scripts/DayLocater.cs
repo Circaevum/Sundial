@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DayLocater : MonoBehaviour
 {
-    private Sundial sundial;
+    private Circaevum sundial;
     private GameObject ParentObject;
     private GameObject clock;
     private Slider mainSlider;
@@ -30,12 +30,11 @@ public class DayLocater : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         ParentObject = GameObject.Find("Orbit");
         //string[] time = DateTime.Now.ToString().Split(' ');
         mainSlider = GameObject.Find("Slider").GetComponent<Slider>();
         radius = ParentObject.GetComponent<ClockValues>().radius/1.84f;
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
         transform.localScale = transform.localScale.y * new Vector3(
             -transform.parent.transform.localScale.x,
             transform.parent.transform.localScale.y,

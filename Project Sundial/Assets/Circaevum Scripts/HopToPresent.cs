@@ -5,14 +5,14 @@ using System;
 
 public class HopToPresent : MonoBehaviour
 {
-    private Sundial sundial;
+    private Circaevum sundial;
     private float start = 0;
     private float focus;
 
     private float startingPosition;
     private float targetPosition;
     void Start(){
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
     }
 
     public void PresentHop()

@@ -6,14 +6,14 @@ using System.IO;
 public class EarthOrbit : MonoBehaviour
 {
     private float radius;
-    private Sundial sundial;
+    private Circaevum sundial;
     private LineRenderer lineRenderer;
     private GameObject ParentObject;
     public int planet;
 
     void Start()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         lineRenderer = GetComponent<LineRenderer>();
         ParentObject = GameObject.Find("Orbit");
         radius = ParentObject.GetComponent<ClockValues>().radius / 2;

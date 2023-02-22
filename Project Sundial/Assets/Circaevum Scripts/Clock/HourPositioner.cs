@@ -6,7 +6,7 @@ using TMPro;
 public class HourPositioner : MonoBehaviour
 {
     TextMeshPro hour;
-    private Sundial sundial;
+    private Circaevum sundial;
     private GameObject ParentObject;
     public int hourNum;
     private float radius;
@@ -15,7 +15,7 @@ public class HourPositioner : MonoBehaviour
     {
         ParentObject = GameObject.Find("Clock");
         radius = ParentObject.GetComponent<ClockValues>().radius+0.075f;
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         transform.position = GameObject.Find("Hours").GetComponent<Transform>().position+ new Vector3(
             -radius * Mathf.Sin(hourNum * Mathf.PI / 12),
             -radius * Mathf.Cos(hourNum * Mathf.PI / 12),

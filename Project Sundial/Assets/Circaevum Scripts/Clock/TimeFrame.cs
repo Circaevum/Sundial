@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class TimeFrame : MonoBehaviour
 {
     private LineRenderer lineRenderer;
-    private Sundial sundial;
+    private Circaevum sundial;
     private GameObject clock;
     private GameObject ParentObject;
     private Slider mainSlider;
@@ -20,7 +20,7 @@ public class TimeFrame : MonoBehaviour
 
     void Start()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         ParentObject = GameObject.Find("Clock");
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.startWidth = 0.001f;

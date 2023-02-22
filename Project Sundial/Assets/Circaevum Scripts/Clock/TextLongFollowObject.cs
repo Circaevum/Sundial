@@ -7,7 +7,7 @@ public class TextLongFollowObject : MonoBehaviour
 {
     public Transform LongTextObject;
     private Slider mainSlider;
-    private Sundial sundial;
+    private Circaevum sundial;
     private GameObject clock;
 
     public float radius;
@@ -18,7 +18,7 @@ public class TextLongFollowObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         clock = GameObject.Find("Clock");
         mainSlider = GameObject.Find("Slider").GetComponent<Slider>();
         radius = clock.GetComponent<ClockValues>().radius;

@@ -14,7 +14,7 @@ public class StraightEventModeler : MonoBehaviour
     private Toggle straight;
     private Transform earth;
     private Transform origin;
-    private Sundial sundial;
+    private Circaevum sundial;
     private Toggle rotateTime;
 
 
@@ -36,7 +36,7 @@ public class StraightEventModeler : MonoBehaviour
         mainSlider = GameObject.Find("Slider").GetComponent<Slider>();
         rotateTime = GameObject.Find("Toggle Rotate Time").GetComponent<Toggle>();
         mainSlider.onValueChanged.AddListener(delegate { Slider_Changed(mainSlider.value); });
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         int i = 0;
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.useWorldSpace = false;

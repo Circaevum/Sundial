@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class EarthCoordinates : MonoBehaviour {
-	private Sundial sundial;
+	private Circaevum sundial;
 	public Transform cam;
     public Slider mainSlider;
     private Toggle rotateTime;
@@ -11,7 +11,7 @@ public class EarthCoordinates : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         mainSlider = GameObject.Find("Slider").GetComponent<Slider>();
         rotateTime = GameObject.Find("Toggle Rotate Time").GetComponent<Toggle>();
         straight = GameObject.Find("Straight Toggle").GetComponent<Toggle>();

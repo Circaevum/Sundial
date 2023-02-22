@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class ClockMover : MonoBehaviour
 {    
-	private Sundial sundial;
+	private Circaevum sundial;
     private GameObject clock;
     public float time;
     private Vector3 position= new Vector3(0,0,0);
 
     private void Start()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
     }
     private void Update()
     {

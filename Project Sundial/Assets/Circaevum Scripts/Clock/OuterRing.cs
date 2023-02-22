@@ -7,14 +7,14 @@ public class OuterRing : MonoBehaviour
 {
     LineRenderer outerRing;
     public Transform Earth;
-    private Sundial sundial;
+    private Circaevum sundial;
     private Toggle rotateTime;
     private Toggle straight;
     public Transform cam;
     // Use this for initialization
     void Start()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         outerRing = GetComponent<LineRenderer>();
         outerRing.SetVertexCount(25);
         rotateTime = GameObject.Find("Toggle Rotate Time").GetComponent<Toggle>(); 

@@ -6,7 +6,7 @@ using TMPro;
 
 public class EmailEventObject : MonoBehaviour
 {
-    private Sundial sundial;
+    private Circaevum sundial;
     private Button emailButton;
     private GameObject clock;
     private GameObject ParentObject;
@@ -22,7 +22,7 @@ public class EmailEventObject : MonoBehaviour
 
     void Start()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         ParentObject = GameObject.Find("Clock");
         emailButton = GetComponentInChildren<Button>();
         mainSlider = GameObject.Find("Slider").GetComponent<Slider>();

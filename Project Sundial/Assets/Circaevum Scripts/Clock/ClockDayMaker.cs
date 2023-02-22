@@ -7,13 +7,13 @@ using System;
 public class ClockDayMaker : MonoBehaviour
 {
     public GameObject clockDay;
-    private Sundial sundial;
+    private Circaevum sundial;
     public float radius;
     private int theTime;
     // Use this for initialization
     void Start()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         //Determine the local time.
         theTime = sundial.now;
 

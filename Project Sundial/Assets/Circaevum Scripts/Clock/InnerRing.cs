@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class InnerRing : MonoBehaviour {
     LineRenderer innerRing;
     public Transform Earth;
-    private Sundial sundial;
+    private Circaevum sundial;
     private Toggle rotateTime;
     private Toggle straight;
     public Transform cam;
@@ -14,7 +14,7 @@ public class InnerRing : MonoBehaviour {
     void Start () {
 		innerRing = GetComponent<LineRenderer>();
         innerRing.positionCount =25;
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         rotateTime = GameObject.Find("Toggle Rotate Time").GetComponent<Toggle>();
         straight = GameObject.Find("Straight Toggle").GetComponent<Toggle>();
     }

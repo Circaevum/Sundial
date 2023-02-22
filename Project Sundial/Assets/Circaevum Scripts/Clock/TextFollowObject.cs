@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 
 public class TextFollowObject : MonoBehaviour {
-    private Sundial sundial;
+    private Circaevum sundial;
     private GameObject clock;
     private Slider mainSlider;
     public float radius;
@@ -15,7 +15,7 @@ public class TextFollowObject : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         float k = start + ((float)stop - (float)start) / 2f;
         mainSlider = GameObject.Find("Slider").GetComponent<Slider>();
         clock = transform.parent.transform.gameObject;

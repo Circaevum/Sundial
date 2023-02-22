@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ShortTermEvent : MonoBehaviour
 {
-    private Sundial sundial;
+    private Circaevum sundial;
     private LineRenderer lineRenderer;
     private GameObject clock;
     private GameObject ParentObject;
@@ -31,7 +31,7 @@ public class ShortTermEvent : MonoBehaviour
     void Start()
     {
         julian = transform.parent.GetComponent<DayLocater>().julianDay;
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.startWidth = 0.005f;
         lineRenderer.endWidth = 0.005f;

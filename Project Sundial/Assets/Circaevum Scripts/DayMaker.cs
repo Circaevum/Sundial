@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class DayMaker : MonoBehaviour
 {
     public GameObject dayX;
-    private Sundial sundial;
+    private Circaevum sundial;
     // Use this for initialization
     void Start()
     {
-        sundial = GameObject.Find("Sundial").GetComponent<Sundial>();
+        sundial = GameObject.Find("Sundial").GetComponent<Circaevum>();
         for (int i = 0; i < 365; i++)
         {
             InstantiateDay(i);
