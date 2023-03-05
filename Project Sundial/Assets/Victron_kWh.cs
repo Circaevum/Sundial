@@ -68,7 +68,7 @@ public class Victron_kWh : MonoBehaviour
         lineRenderer.positionCount = metric.Count;
         for (int i = 0; i < metric.Count; i++)
         {
-            float rad = radius+metric[i].Item2*3.0f;
+            float rad = metric[i].Item2*3.0f;
             float angle = (float)UnixTimestampToAngle(metric[i].Item1)-90.0f;
             long timestamp = metric[i].Item1/1000;
             //print(time+":     LOCAL"+timestamp+":   DIFF:"+(timestamp-time)+":   RAD:"+rad+ ":   ANGLE:" + angle);

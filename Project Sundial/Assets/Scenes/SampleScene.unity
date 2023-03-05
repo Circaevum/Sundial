@@ -342,6 +342,10 @@ PrefabInstance:
       value: -85
       objectReference: {fileID: 0}
     - target: {fileID: 11406784, guid: 4ce6257f2f94b4e4ca299c4a47cd0dc0, type: 3}
+      propertyPath: zoomSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406784, guid: 4ce6257f2f94b4e4ca299c4a47cd0dc0, type: 3}
       propertyPath: distanceMax
       value: 7
       objectReference: {fileID: 0}
@@ -1419,7 +1423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f4abc7734f18f4a9340f4d6c07518d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kWh_event: {fileID: 930484959}
+  DataLine: {fileID: 930484959}
 --- !u!1001 &799714300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1727,7 +1731,7 @@ GameObject:
   - component: {fileID: 930484962}
   - component: {fileID: 930484961}
   m_Layer: 0
-  m_Name: Victron_kWh
+  m_Name: Victron_solar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

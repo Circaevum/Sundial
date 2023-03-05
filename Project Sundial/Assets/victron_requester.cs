@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using Newtonsoft.Json.Linq;
+using Unity.VisualScripting;
 
 public class victron_requester : MonoBehaviour
 {
@@ -15,7 +17,8 @@ public class victron_requester : MonoBehaviour
     private string bearer = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjYzYzU5MmMyOWU4YjA2NjJjY2RjZTU0YzM2ZmUzNzhhIn0.eyJ1aWQiOiIyNTgyMTQiLCJ0b2tlbl90eXBlIjoiZGVmYXVsdCIsImlzcyI6InZybWFwaS52aWN0cm9uZW5lcmd5LmNvbSIsImF1ZCI6Imh0dHBzOi8vdnJtYXBpLnZpY3Ryb25lbmVyZ3kuY29tLyIsImlhdCI6MTY3Nzk2MDQzNiwiZXhwIjoxNjc4MDQ2ODM2LCJqdGkiOiI2M2M1OTJjMjllOGIwNjYyY2NkY2U1NGMzNmZlMzc4YSJ9.sbEeeK8hvh95Md5DhdTdNPApqS9Q4k9FyHC4PEP-0n8VKsc6b0UH2duni8Nv7M0i_DW278iIZZY7unXU2d7oqWopqtMkC7sS9jn2Ike3so1INRIC7QvNLDuOgO3qUoyw5oFYw854lh4iiAmQ5wA7fBd-R64rFiKXLZKh9ZOmsk8l1BbQlPB3z-6P7YbSIUfMmenZKoEkVsvxO-M7eLhmARwxY4CQlE78RYCjikxvuxsR7ezC96B_wNg86CYiIpQ4aI2-AU--lQtI8Z8Qe9XQ70ep2KcVgcyKwhr2mN8uQRxsTqyhshgMdMac4rqziNYqGKFtK7Mh1kScpBS7bKPnMQ";
     private string apiURL = "https://vrmapi.victronenergy.com/v2/installations/";
     private string victron_response;
-    public GameObject kWh_event;
+    public GameObject DataLine;
+    private string[] metrics = { "solar_yield", "kwh", "consumption" };
 
     // Start is called before the first frame update
     private void Start()
@@ -24,11 +27,13 @@ public class victron_requester : MonoBehaviour
         //string startDate = DateTime.Now.AddDays(-1).ToString("yyyy-MM-ddT00:00:00");
         string endDate = DateTime.Now.ToString("yyyy-MM-ddT23:59:59");
 
-        for (int i = 0; i <= 10; i++)
-            RequestData(-i);
-        //return iStats;
+        foreach (string type in metrics)
+        {
+            RequestData(-10,type);
+        }
+        
     }
-    void RequestData(int days)
+    void RequestData(int days, string type)
     {
         string interval = "15mins";
         DateTime day = DateTime.UtcNow.AddDays(days);
@@ -37,19 +42,54 @@ public class victron_requester : MonoBehaviour
         print("fff:" + unixTimestampSeconds);
         Root iStats = new Root();
 
-        string url = apiURL + siteID + "/stats?start=" + unixTimestampSeconds + "&type=solar_yield&interval=" + interval;
+        string url = apiURL + siteID + "/stats?start=" + unixTimestampSeconds + "&type="+type+"&interval=" + interval;
         string myResponse = null;
 
         StartCoroutine(MakeWebRequest(url, (response) =>
         {
             myResponse = response.ToString();
             iStats = JsonConvert.DeserializeObject<Root>(myResponse);
-            List<Tuple<long, float>> battery_cap = ConvertToListOfTuples(iStats.records.Pb);
-            print(battery_cap.First().Item1);
-            GameObject newKwh = Instantiate(kWh_event);
-            newKwh.SetActive(true);
-            newKwh.transform.parent = GameObject.Find("Clock").transform;
-            newKwh.GetComponent<Victron_kWh>().metric = battery_cap;
+            List<string> used_properties = new List<string>();
+            foreach (var property in iStats.records.GetType().GetProperties())
+            {
+                if(property.GetValue(iStats.records) is List<List<double>> array && array != null && !used_properties.Contains(property.Name))
+                {
+                    used_properties.Add(property.Name);
+                    List<Tuple<long, float>> responseData = ConvertToListOfTuples(array);
+                    GameObject newDataLine = Instantiate(DataLine);
+                    newDataLine.SetActive(true);
+                    newDataLine.name = day.ToString() + "_" + type+"_"+property.Name;
+                    newDataLine.transform.parent = GameObject.Find("Clock").transform;
+                    newDataLine.GetComponent<Victron_kWh>().metric = responseData;
+                    LineRenderer lineRenderer = newDataLine.GetComponent<LineRenderer>();
+                    switch (property.Name)
+                    {
+                        case "Pb":
+                            lineRenderer.startColor = Color.yellow;
+                            lineRenderer.endColor = Color.yellow;
+                            break;
+                        case "Bc":
+                            lineRenderer.startColor = Color.green;
+                            lineRenderer.endColor = Color.green;
+                            break;
+                        case "Pc":
+                            lineRenderer.startColor = Color.red;
+                            lineRenderer.endColor = Color.red;
+                            break;
+                        case "kwh":
+                            lineRenderer.startColor = Color.blue;
+                            lineRenderer.endColor = Color.blue;
+                            break;
+                        default:
+                            lineRenderer.startColor = Color.white;
+                            lineRenderer.endColor = Color.white;
+                            break;
+                    }
+                }
+            }
+            //List<Tuple<long, float>> responseData = ConvertToListOfTuples(iStats.records.Pb);
+            //foreach ()
+            
         }));
     }
 
